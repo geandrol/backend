@@ -11,6 +11,7 @@ import com.geandro.rastreador.model.Pedido;
 import com.geandro.rastreador.model.StatusPedido;
 import com.geandro.rastreador.service.PedidoService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController {

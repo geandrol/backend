@@ -14,7 +14,8 @@ import com.geandro.rastreador.service.UsuarioService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Pedidos", description = "Gerenciamento de pedidos")
+@CrossOrigin(origins = "*")
+@Tag(name = "usuarios", description = "Gerenciamento de pedidos")
 @SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("/usuarios")

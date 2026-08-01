@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.geandro.rastreador.model.ItemPedido;
 import com.geandro.rastreador.repository.ItemPedidoRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/itens")
 public class ItemPedidoController {
