@@ -1,5 +1,6 @@
 package com.geandro.rastreador.controller;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +52,12 @@ public class UsuarioController {
 		String token = jwtService.gerarToken(usuario.getEmail());
 
 		return ResponseEntity.ok(new LoginResponseDTO(token));
+	}
+	
+	@GetMapping("/me")
+	public ResponseEntity<Usuario> me(Authentication authentication) {
+	    Usuario usuario = service.buscarPorEmail(authentication.getName());
+	    return ResponseEntity.ok(usuario);
 	}
 
 }
