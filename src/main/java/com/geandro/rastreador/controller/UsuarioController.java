@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.geandro.rastreador.dto.LoginResponseDTO;
 import com.geandro.rastreador.dto.UsuarioCadastroDTO;
 import com.geandro.rastreador.dto.UsuarioLoginDTO;
+import com.geandro.rastreador.dto.UsuarioRespostaDTO;
 import com.geandro.rastreador.model.Usuario;
 import com.geandro.rastreador.service.JwtService;
 import com.geandro.rastreador.service.UsuarioService;
@@ -57,9 +58,9 @@ public class UsuarioController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> listar() {
+	public ResponseEntity<List<UsuarioRespostaDTO>> listar() {
 
-	    return ResponseEntity.ok(service.listar());
+		return ResponseEntity.ok(service.listar());
 
 	}
 
