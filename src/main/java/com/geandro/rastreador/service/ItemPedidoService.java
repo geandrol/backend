@@ -15,10 +15,9 @@ public class ItemPedidoService {
 	}
 
 	public ItemPedido cadastrar(ItemPedidoDTO dto) {
-		ItemPedido item = new ItemPedido();
-		item.setProduto(dto.getProduto());
-		item.setQuantidade(dto.getQuantidade());
-		item.setPreco(dto.getPreco());
-		return repository.save(item);
+	    ItemPedido item = new ItemPedido();
+	    item.setProduto(dto.getProduto());
+	    item.setPreco(dto.getPreco());
+	    return repository.save(item);
 	}
 }

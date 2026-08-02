@@ -4,8 +4,6 @@ public class ItemPedidoDTO {
 
 	private String produto;
 
-	private Integer quantidade;
-
 	private Double preco;
 
 	public String getProduto() {
@@ -14,14 +12,6 @@ public class ItemPedidoDTO {
 
 	public void setProduto(String produto) {
 		this.produto = produto;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public Double getPreco() {

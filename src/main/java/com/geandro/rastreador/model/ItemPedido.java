@@ -14,8 +14,6 @@ public class ItemPedido {
 
 	private String produto;
 
-	private Integer quantidade;
-
 	private Double preco;
 
 	/*@ManyToOne
@@ -37,14 +35,6 @@ public class ItemPedido {
 
 	public void setProduto(String produto) {
 		this.produto = produto;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public Double getPreco() {

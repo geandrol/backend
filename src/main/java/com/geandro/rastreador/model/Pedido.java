@@ -36,9 +36,8 @@ public class Pedido {
 	/*
 	 * Produtos do pedido
 	 */
-	@ManyToMany
-	@JoinTable(name = "pedido_itens", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "item_pedido_id"))
-	private List<ItemPedido> itens;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PedidoItem> itens;
 
 	public Long getId() {
 		return id;
@@ -80,12 +79,14 @@ public class Pedido {
 		this.endereco = endereco;
 	}
 
-	public List<ItemPedido> getItens() {
+	public List<PedidoItem> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<ItemPedido> itens) {
+	public void setItens(List<PedidoItem> itens) {
 		this.itens = itens;
 	}
+
+	
 
 }
