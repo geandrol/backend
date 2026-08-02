@@ -1,10 +1,13 @@
 package com.geandro.rastreador.service;
 
+import java.util.List;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.geandro.rastreador.dto.UsuarioCadastroDTO;
 import com.geandro.rastreador.dto.UsuarioLoginDTO;
+import com.geandro.rastreador.dto.UsuarioRespostaDTO;
 import com.geandro.rastreador.model.Usuario;
 import com.geandro.rastreador.repository.UsuarioRepository;
 
@@ -58,6 +61,26 @@ public class UsuarioService {
 		}
 
 		return usuario;
+
+	}
+	
+	public List<UsuarioRespostaDTO> listar() {
+
+	    return repository.findAll()
+	            .stream()
+	            .map(usuario -> {
+
+	                UsuarioRespostaDTO dto =
+	                        new UsuarioRespostaDTO();
+
+	                dto.setId(usuario.getId());
+	                dto.setNome(usuario.getNome());
+	                dto.setEmail(usuario.getEmail());
+
+	                return dto;
+
+	            })
+	            .toList();
 
 	}
 	

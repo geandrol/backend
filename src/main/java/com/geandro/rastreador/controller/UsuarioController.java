@@ -1,5 +1,7 @@
 package com.geandro.rastreador.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +54,13 @@ public class UsuarioController {
 		String token = jwtService.gerarToken(usuario.getEmail());
 
 		return ResponseEntity.ok(new LoginResponseDTO(token));
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Usuario>> listar() {
+
+	    return ResponseEntity.ok(service.listar());
+
 	}
 
 }
