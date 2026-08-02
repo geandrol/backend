@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.geandro.rastreador.dto.ClienteCadastroDTO;
 import com.geandro.rastreador.dto.LoginResponseDTO;
 import com.geandro.rastreador.dto.UsuarioCadastroDTO;
 import com.geandro.rastreador.dto.UsuarioLoginDTO;
@@ -55,6 +56,19 @@ public class UsuarioController {
 		String token = jwtService.gerarToken(usuario.getEmail());
 
 		return ResponseEntity.ok(new LoginResponseDTO(token));
+	}
+	
+	@PostMapping("/clientes")
+	public ResponseEntity<UsuarioRespostaDTO> cadastrarCliente(@RequestBody ClienteCadastroDTO dto) {
+
+		Usuario usuario = service.cadastrarCliente(dto);
+
+		UsuarioRespostaDTO resposta = new UsuarioRespostaDTO();
+		resposta.setId(usuario.getId());
+		resposta.setNome(usuario.getNome());
+		resposta.setEmail(usuario.getEmail());
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
 	}
 	
 	@GetMapping

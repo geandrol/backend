@@ -40,7 +40,7 @@ public class SecurityConfig {
 	                    // Preflight sempre livre
 	                    .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
 	                    // Rotas públicas
-	                    .requestMatchers("/usuarios/cadastro", "/usuarios/login").permitAll()
+	                    .requestMatchers("/usuarios/cadastro", "/usuarios/login", "/usuarios/clientes").permitAll()
 	                    // Todo o restante exige JWT
 	                    .anyRequest().authenticated())
 	            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
