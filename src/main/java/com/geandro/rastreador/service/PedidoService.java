@@ -54,14 +54,10 @@ public class PedidoService {
 	        throw new RuntimeException("Um ou mais itens informados não foram encontrados");
 	    }
 
-	    // vincula cada item ao pedido
-	    itens.forEach(item -> item.setPedido(pedido));
-
-	    pedido.setItens(itens);
+	    pedido.setItens(itens); // Hibernate cria os vínculos na tabela pedido_itens
 
 	    return pedidoRepository.save(pedido);
 	}
-
 	/*
 	 * Listar todos pedidos
 	 */

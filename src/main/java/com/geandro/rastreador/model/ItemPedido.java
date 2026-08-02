@@ -18,10 +18,10 @@ public class ItemPedido {
 
 	private Double preco;
 
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "pedido_id")
 	@JsonIgnore
-	private Pedido pedido;
+	private Pedido pedido;*/
 
 	public Long getId() {
 		return id;
@@ -55,12 +55,6 @@ public class ItemPedido {
 		this.preco = preco;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
+	
 
 }

@@ -36,7 +36,8 @@ public class Pedido {
 	/*
 	 * Produtos do pedido
 	 */
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@ManyToMany
+	@JoinTable(name = "pedido_itens", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "item_pedido_id"))
 	private List<ItemPedido> itens;
 
 	public Long getId() {
