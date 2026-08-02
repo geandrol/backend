@@ -30,24 +30,21 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-		http.csrf(csrf -> csrf.disable())
-				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests(auth -> auth
-
-						// Swagger
-						.requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api-docs/**")
-						.permitAll()
-
-						// Rotas públicas
-						.requestMatchers("/usuarios/cadastro", "/usuarios/login").permitAll()
-
-						// Todo o restante exige JWT
-						.anyRequest().authenticated())
-
-				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-
-		return http.build();
+	    http.csrf(csrf -> csrf.disable())
+	            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // <-- estava faltando
+	            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+	            .authorizeHttpRequests(auth -> auth
+	                    // Swagger
+	                    .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api-docs/**")
+	                    .permitAll()
+	                    // Preflight sempre livre
+	                    .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+	                    // Rotas públicas
+	                    .requestMatchers("/usuarios/cadastro", "/usuarios/login").permitAll()
+	                    // Todo o restante exige JWT
+	                    .anyRequest().authenticated())
+	            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+	    return http.build();
 	}
 	
 	@Bean
