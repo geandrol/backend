@@ -1,6 +1,8 @@
 package com.geandro.rastreador.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,9 +17,11 @@ public class PedidoItem {
 	@JoinColumn(name = "pedido_id")
 	@JsonIgnore
 	private Pedido pedido;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "item_pedido_id")
+	@JsonUnwrapped
+	@com.fasterxml.jackson.annotation.JsonIgnoreProperties("id")
 	private ItemPedido item;
 
 	private Integer quantidade;
